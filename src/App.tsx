@@ -1,10 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
+import Trailer from './componentes/trailer'; 
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const [showTrailer, setShowTrailer] = useState(false); 
+
+  const handleShowTrailer = () => {
+    setShowTrailer(true);
+  };
+
+  const handleBack = () => {
+    setShowTrailer(false);
+  };
+
+  if (showTrailer) {
+    return (
+      <div>
+        <button
+          onClick={handleBack}
+          className="px-4 py-2 bg-red-500 text-white rounded-lg m-4"
+        >
+          Volver al inicio
+        </button>
+        <Trailer />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -25,11 +49,22 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
+
+      {}
+      <div className="mt-6">
+        <button
+          onClick={handleShowTrailer}
+          className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+        >
+          Trailer 
+        </button>
+      </div>
+
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
